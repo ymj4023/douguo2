@@ -1,0 +1,116 @@
+{% load static %}
+<div class="card border-0 rounded-0 f-16" id="editor-block">
+    {% if user.is_authenticated %}
+    <div class="card-body p-2 p-md-3">
+        <textarea class="form-control rounded-0" id="comment-form" name="text"
+                  placeholder="评论请使用 markdown 语法" rows="5" required></textarea>
+    </div>
+    <div class="card-footer border-0 bg-white py-0 px-2 px-md-3" id="editor-footer">
+        <button type="button" class="btn btn-info btn-sm float-right f-16"
+                id="push-com" data-csrf="{{ csrf_token }}" data-article-id="{{ article.id }}"
+                data-ajax-url="{% url 'comment:add_comment' %}">提交评论</button>
+        <button class="btn btn-sm py-0 px-2" id="emoji-btns" type="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-smile-beam fa-2x"></i>
+        </button>
+        <div class="dropdown-menu" id='emoji-list' aria-labelledby="emoji-btns">
+            <div class="editor-btns px-2">
+                <button class="btn p-1"><img
+                        src="{% static 'comment/bilibili/weixiao.webp' %}"
+                        title="微笑" alt="weixiao"
+                        data-emoji=":weixiao:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/xianqi.webp' %}"
+                                             title="嫌弃" alt="xianqi"
+                                             data-emoji=":xianqi:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/xihuan.webp' %}"
+                                             title="喜欢"
+                                             alt="xihuan" data-emoji=":xihuan:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/dai.webp' %}"
+                                             title="呆" alt="dai"
+                                             data-emoji=":dai:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/daku.webp' %}" title="大哭"
+                                             alt="daku" data-emoji=":daku:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/haixiu.webp' %}" title="害羞" alt="haixiu"
+                                             data-emoji=":haixiu:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/wuyu.webp' %}" title="无语"
+                                             alt="wuyu" data-emoji=":wuyu:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/weiqu.webp' %}" title="委屈"
+                                             alt="weiqu" data-emoji=":weiqu:"></button>
+            </div>
+            <div class="editor-btns px-2">
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/ganga.webp' %}" title="尴尬"
+                                             alt="ganga" data-emoji=":ganga:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/shengqi.webp' %}" title="生气"
+                                             alt="shengqi" data-emoji=":shengqi:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/jianxiao.webp' %}" title="奸笑"
+                                             alt="jianxiao" data-emoji=":jianxiao:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/daxiao.webp' %}" title="大笑"
+                                             alt="daxiao" data-emoji=":daxiao:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/jingya.webp' %}" title="惊讶"
+                                             alt="jingya" data-emoji=":jingya:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/jiong.webp' %}"
+                                             title="囧" alt="jiong"
+                                             data-emoji=":jiong:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/wulian.webp' %}"
+                                             title="捂脸" alt="wulian"
+                                             data-emoji=":wulian:"></button>
+                <button class="btn p-1"><img
+                        src="{% static 'comment/bilibili/linghunchuqiao.webp' %}"
+                        title="灵魂出窍" alt="linghunchuqiao"
+                        data-emoji=":linghunchuqiao:"></button>
+            </div>
+            <div class="editor-btns px-2">
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/tu.webp' %}"
+                                             title="吐" alt="tu"
+                                             data-emoji=":tu:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/koubi.webp' %}" title="抠鼻"
+                                             alt="koubi" data-emoji=":koubi:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/jingxi.webp' %}" title="惊喜"
+                                             alt="jingxi" data-emoji=":jingxi:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/aojiao.webp' %}" title="傲娇"
+                                             alt="aojiao" data-emoji=":aojiao:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/teng.webp' %}" title="疼"
+                                             alt="teng" data-emoji=":teng:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/xia.webp' %}" title="吓"
+                                             alt="xia" data-emoji=":xia:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/yinxian.webp' %}" title="阴险"
+                                             alt="yinxian" data-emoji=":yinxian:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/huafengtubian.webp' %}" title="画风突变"
+                                             alt="huafengtubian" data-emoji=":huafengtubian:"></button>
+            </div>
+            <div class="editor-btns px-2">
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/dianzan.webp' %}" title="点赞"
+                                             alt="dianzan" data-emoji=":dianzan:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/shengbing.webp' %}" title="生病"
+                                             alt="shengbing" data-emoji=":shengbing:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/huaji.webp' %}" title="滑稽"
+                                             alt="huaji" data-emoji=":huaji:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/doge.webp' %}"
+                                             title="[doge]" alt="doge"
+                                             data-emoji=":doge:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/xu.webp' %}" title="嘘"
+                                             alt="xu" data-emoji=":xu:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/xiangzhi.webp' %}" title="响指"
+                                             alt="xiangzhi" data-emoji=":xiangzhi:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/dawankuanmian.webp' %}" title="大碗宽面"
+                                             alt="dawankuanmian" data-emoji=":dawankuanmian:"></button>
+                <button class="btn p-1"><img src="{% static 'comment/bilibili/heidong.webp' %}" title="黑洞"
+                                             alt="heidong" data-emoji=":heidong:"></button>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card-body text-center m-2 m-md-3 f-16" id="no-editor">
+        <div>您尚未登录，请
+            <a class="text-danger" href="{% url 'account_login' %}?next={{ request.path }}">登录</a> 或
+            <a class="text-danger" href="{% url 'account_signup' %}?next={{ request.path }}">注册</a> 后评论
+        </div>
+        <div class="login-link mt-2">
+            <a class="mx-3" href="/accounts/weibo/login/?next={{ request.path }}" title="社交账号登录有点慢，请耐心等候！"><i
+                    class="fab fa-weibo fa-2x" style="color: indianred;"></i></a>
+            <a class="mx-3" href="/accounts/github/login/?next={{ request.path }}" title="社交账号登录有点慢，请耐心等候！"><i
+                    class="fab fa-github fa-2x" style="color: #f0c674;"></i></a>
+        </div>
+    </div>
+    {% endif %}
+</div>
