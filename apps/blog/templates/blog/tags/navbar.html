@@ -28,11 +28,11 @@
                 <a class="nav-link py-md-3" href="{% url 'api:api-root' %}" target="_blank"><i class="fa fa-key mr-1"></i>API</a>
             </li>
             {% endif %}
-            <form class="nav-item navbar-form mr-2 py-md-2" role="search" method="get" id="searchform" action="{% url 'blog:search_view' %}">
+            <form class="nav-item navbar-form mr-2 py-md-2" role="search" method="get" id="searchform" action="{% url 'blog:search_view'%}">
                 <div class="input-group">
                     <input type="search" name="q" class="form-control f-15" placeholder="输入关键词" required=True>
                     <div class="input-group-btn">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</i></button>
+                        <button class="btn btn-outline-success" type="submit">搜索</button>
                     </div>
                 </div><!-- /input-group -->
             </form>
