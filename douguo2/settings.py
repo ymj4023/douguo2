@@ -45,7 +45,7 @@ API_FLAG = False
 # 值为0：所有平台关闭DEBUG,值为1:所有平台开启DEBUG,值为其他：根据平台类型判断开启（默认设置的Windows下才开启）
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','douguo2.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.douguo2.com']
 
 
 # Application definition
