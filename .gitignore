@@ -109,6 +109,7 @@ bin/
 /mysql_password.txt
 whoosh_index/
 /env.json
+/data.sql
 
 # 第一次上传的时候要禁用下面的忽略设置，然后自行删除文件，之后再打开
 #migrations/
