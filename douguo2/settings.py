@@ -167,9 +167,9 @@ else:
         'ENGINE': 'django.db.backends.mysql',
         'HOST':'127.0.0.1',
         'POST': '3306',
-        'USER': 'douguo',
+        'USER': 'douguo2',
         'PASSWORD':'MYSQL_PASSWORD',
-        'NAME': 'douguo',
+        'NAME': 'douguo2',
         # 避免映射数据库时出现警告
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
