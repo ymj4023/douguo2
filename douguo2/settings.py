@@ -15,6 +15,7 @@ import sys
 import pymysql
 import platform
 import json
+
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -153,31 +154,21 @@ WSGI_APPLICATION = 'douguo2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
-    MYSQL_PASSWORD = ENV.get('MYSQL_KEY')
-    DATABASES = {
+
+MYSQL_PASSWORD = ENV.get('MYSQL_KEY')
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST':'127.0.0.1',
         'POST': '3306',
         'USER': 'douguo2',
-        'PASSWORD':'MYSQL_PASSWORD',
+        'PASSWORD':MYSQL_PASSWORD,
         'NAME': 'douguo2',
-        # 避免映射数据库时出现警告
         'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'charset': 'utf8mb4',
+        'charset': 'utf8mb4',
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
