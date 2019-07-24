@@ -13,7 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import include
+from django.urls import re_path,path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
@@ -43,19 +44,20 @@ sitemaps = {
 }
 
 urlpatterns = [
-    url(r'^adminx/', admin.site.urls),
-    url(r'^accounts/', include('allauth.urls')),  # allauth
-    url(r'^accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
-    url('', include('blog.urls', namespace='blog')),  # blog
-    url(r'^comment/',include('comment.urls',namespace='comment')), # comment
-    url(r'^donate/', TemplateView.as_view(template_name='blog/donate.html'), name='donate'),
-    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')), # robots
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'), # 网站地图
-    url(r'^feed/$', AllArticleRssFeed(), name='rss'),   # rss订阅
+    re_path(r'^adminx/', admin.site.urls),
+    re_path(r'^accounts/', include('allauth.urls')),  # allauth
+    re_path(r'^accounts/', include('oauth.urls', namespace='oauth')),  # oauth,只展现一个用户登录界面
+    re_path('', include('blog.urls', namespace='blog')),  # blog
+    re_path(r'^comment/',include('comment.urls',namespace='comment')), # comment
+    re_path(r'^donate/', TemplateView.as_view(template_name='blog/donate.html'), name='donate'),
+    re_path(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')), # robots
+    re_path(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'), # 网站地图
+    re_path(r'^feed/$', AllArticleRssFeed(), name='rss'),   # rss订阅
+    path('imagesource/', include('imagesource.urls', namespace='imagesource')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 加入这个才能显示media文件
 
 if settings.API_FLAG:
-    urlpatterns.append(url(r'^api/v1/',include(router.urls,namespace='api')))    # restframework
+    urlpatterns.append(re_path(r'^api/v1/',include(router.urls,namespace='api')))    # restframework
 
 if settings.TOOL_FLAG:
-    urlpatterns.append(url(r'^tool/', include('tool.urls',namespace='tool')))    # tool
+    urlpatterns.append(re_path(r'^tool/', include('tool.urls',namespace='tool')))    # tool

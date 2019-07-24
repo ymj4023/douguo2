@@ -75,11 +75,13 @@ INSTALLED_APPS = [
     'oauth',  # 自定义用户应用
     'crispy_forms',  # bootstrap表单样式
     'imagekit',  # 上传图片的应用
+    'imagesource',  # 图库
 
     'haystack',  # 全文搜索应用 这个要放在其他应用之前
     'blog',  # 博客应用
     'tool',  # 工具
     'comment',  # 评论
+    'utils',  # 2号工具
 ]
 
 # 自定义用户model
@@ -158,7 +160,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST':'127.0.0.1',
         'POST': '3306',
-        'USER': 'douguo2',
+        'USER': 'root',
         'PASSWORD':MYSQL_PASSWORD,
         'NAME': 'douguo2',
         'OPTIONS': {

@@ -33,7 +33,10 @@
                 <a target="_blank" href="https://getbootstrap.com/">
                     Bootstrap
                 </a>
-                <span class="mb-0">&nbsp;闽ICP备xxxxxxxx号-x</span>
+                <span class="mb-0">
+                    <a href="http://www.miibeian.gov.cn/" target="_blank">闽ICP备19013705号-1</a>&nbsp;|
+                    <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}" target="_blank">Sitemap</a>
+                </span>
             </p>
         </div>
     </div>
@@ -87,5 +90,12 @@
         layer.close(this.index);
     });
 </script>
-
-
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    var sentence = document.querySelector("#poem_sentence")
+    var info = document.querySelector("#poem_info")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+  });
+</script>

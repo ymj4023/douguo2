@@ -1,6 +1,17 @@
 {% load cache %}
 {% load blog_tags static %}
 
+
+<!--每日诗词-->
+<div class="card border-0 rounded-0 px-3 mb-2 mb-md-3" id="tag-card">
+    <div class="card-header bg-white px-0">
+        <strong><i class="fab fa-pagelines mr-2 f-17"></i>每日诗词</strong>
+    </div>
+    <div class="card-body px-0 py-3">
+        <div id="poem_sentence"style="text-align: center; color: #CD2626;"></div>
+        <div id="poem_info"style=" color: darkviolet;"></div>
+    </div>
+</div>
 <!--个人空间-->
 {% cache 1800 'cache_baseright_html_tag' %}
 <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3 d-none d-lg-block" id="home-card">
