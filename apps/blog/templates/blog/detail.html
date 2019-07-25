@@ -47,8 +47,19 @@
                     <div class="article-body mt-4 f-17" style="line-height:1.8">
                         {{ article.body|safe }}
                         <p class="font-weight-bold text-info">
-                            <i class="fa fa-bullhorn mx-1"></i>
-                            原创文章，转载请注明出处：{{ request.build_absolute_uri }}
+                            <!-- 知识产权署名 -->
+                            {% include 'utils/license.html' %}
+                            <div class="mt-4">
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- 文章详情页面 -->
+                                <ins class="adsbygoogle"
+                                     style="display:inline-block;width:100%;height:90px"
+                                     data-ad-client="ca-pub-1355716004535519"
+                                     data-ad-slot="3874925040"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
                         </p>
                     </div>
                     <div style="text-align: center">
