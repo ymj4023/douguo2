@@ -35,7 +35,10 @@
                 </a>
                 <span class="mb-0">
                     <a href="http://www.miibeian.gov.cn/" target="_blank">闽ICP备19013705号-1</a>&nbsp;|
-                    <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}" target="_blank">Sitemap</a>
+                    <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}" target="_blank">Sitemap&nbsp;|</a>
+                </span>
+                <span>
+                    <a href="https://tongji.baidu.com/sc-web">百度统计</a>
                 </span>
             </p>
             <p>网站已平稳运行：<a href="https://shici.store/poetry-calendar/"><span id="site_runtime" style="color: #24a0f0;"></a></span></p>
@@ -118,4 +121,11 @@
     site_runtime.innerHTML= Y+D + " 天 " + H + " 小时 " + M + " 分 " + S + " 秒 "
     }
     show_site_runtime();
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?09074ca52e7d9a6dfb1c10bd116aaec6";
+      var s = document.getElementsByTagName("script")[0];
 </script>
