@@ -9,11 +9,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import sys
-import pymysql
 import platform
 import json
 
-pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -261,5 +259,5 @@ DEFAULT_FROM_EMAIL = '豆果 <xuerobec@foxmail.com>'
 
 # 网站默认设置和上下文信息
 SITE_END_TITLE = 'douguo2'
-SITE_DESCRIPTION = '网站描述'
-SITE_KEYWORDS = '网站关键词，多个词用英文逗号隔开'
+SITE_DESCRIPTION = '豆果是一个Django搭建的博客,主要用于学习之用。'
+SITE_KEYWORDS = '环境安装,Python学习,Python爬虫,个人随笔,Django博客,Python web开发'
